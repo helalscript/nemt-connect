@@ -1,0 +1,2525 @@
+{
+	"info": {
+		"_postman_id": "cfbbd85d-cb1c-4436-a2d6-d38b117c24ab",
+		"name": "alexnahai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36190216"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Singin&Logout",
+							"item": [
+								{
+									"name": "Login",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"if (jsonData && jsonData.token) {\r",
+													"    pm.globals.set('token', jsonData.token);\r",
+													"    console.log('Token set globally: ' + jsonData.token);\r",
+													"} else {\r",
+													"    console.error('Token not found in the response');\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "husoaib425@gmail.com",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "password",
+													"value": "12345678",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "user@user.com",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/login",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Logout",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/logout",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Refresh Token",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/refresh-token",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"refresh-token"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Sign-up",
+							"item": [
+								{
+									"name": "Registation",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "helal",
+													"type": "text"
+												},
+												{
+													"key": "email",
+													"value": "husoaib425@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "12345678",
+													"type": "text"
+												},
+												{
+													"key": "password_confirmation",
+													"value": "12345678",
+													"type": "text"
+												},
+												{
+													"key": "phone",
+													"value": "01811121903",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/register",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"register"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Verify Email",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = pm.response.json();\r",
+													"\r",
+													"if (jsonData && jsonData.token) {\r",
+													"    pm.globals.set('token', jsonData.token);\r",
+													"    console.log('Token set globally: ' + jsonData.token);\r",
+													"} else {\r",
+													"    console.error('Token not found in the response');\r",
+													"}"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										},
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "husoaib424@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "otp",
+													"value": "1234",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/verify-email",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"verify-email"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Resent OTP",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "husoaib422@gmail.com",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/resend-otp",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"resend-otp"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Forget Password",
+							"item": [
+								{
+									"name": "Forget Password",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "user@user.com",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/forget-password",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"forget-password"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PassWord Reset Verify OTP",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "husoaib422@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "otp",
+													"value": "5265",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/verify-otp",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"verify-otp"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Reset Password",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "user@user.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "12345678",
+													"type": "text"
+												},
+												{
+													"key": "password_confirmation",
+													"value": "12345678",
+													"type": "text"
+												},
+												{
+													"key": "token",
+													"value": "fhfdhfd643",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/reset-password",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"reset-password"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Profile",
+							"item": [
+								{
+									"name": "User info",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{local}}/me",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"me"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Update Profile",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "jakob milton",
+													"type": "text"
+												},
+												{
+													"key": "phone",
+													"value": "+018-11121976",
+													"type": "text"
+												},
+												{
+													"key": "gender",
+													"value": "male",
+													"description": "//male,female,others",
+													"type": "text",
+													"disabled": true
+												},
+												{
+													"key": "avatar",
+													"type": "file",
+													"src": "/E:/Download/istockphoto-2220159718-612x612.jpg"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/update-profile",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"update-profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Password Change",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "current_password",
+													"value": "12345678",
+													"type": "text"
+												},
+												{
+													"key": "new_password",
+													"value": "123456781",
+													"type": "text"
+												},
+												{
+													"key": "new_password_confirmation",
+													"value": "12345678",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{local}}/update-password",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"update-password"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Profile Delete",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/delete-profile",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"delete-profile"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Bin",
+							"item": []
+						}
+					]
+				},
+				{
+					"name": "Goals",
+					"item": [
+						{
+							"name": "Get Active Goal",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/active-goal",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"active-goal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get weekly streak",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/weekly-streak",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"weekly-streak"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/customers",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/goals/3",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"goals",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "monthly_income",
+											"value": "18000",
+											"type": "text"
+										},
+										{
+											"key": "fixed_expense",
+											"value": "20000",
+											"type": "text"
+										},
+										{
+											"key": "alredy_saved",
+											"value": "2000",
+											"type": "text"
+										},
+										{
+											"key": "debt_blance",
+											"value": "10000",
+											"type": "text"
+										},
+										{
+											"key": "goal_type",
+											"value": "save_money",
+											"description": "save_money,paying_debt",
+											"type": "text"
+										},
+										{
+											"key": "target_amount",
+											"value": "5000",
+											"type": "text"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-10-30",
+											"description": "2025-10-24 ",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/goals",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"goals"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time_package_id\": 3,\r\n    \"name\": \"John Doe\",\r\n    \"rfid_sn_left\": \"RFID12345LEFT\",\r\n    \"rfid_sn_right\": \"RFID12345RIGHT\",\r\n    \"phone\": \"+8801712345678\",\r\n    \"email\": \"johndoe@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/customers/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Check-ins",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/check-ins",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"check-ins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check-ins-activity",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/check-ins-activity",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"check-ins-activity"
+									],
+									"query": [
+										{
+											"key": "group_by",
+											"value": "monthly",
+											"description": "weekly,monthly,daily",
+											"disabled": true
+										},
+										{
+											"key": "per_page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/check-ins/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"check-ins",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "goal_id",
+											"value": "4",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "amount_spending",
+											"value": "1100",
+											"type": "text"
+										},
+										{
+											"key": "amount_saved",
+											"value": "500",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{local}}/check-ins",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"check-ins"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time_package_id\": 3,\r\n    \"name\": \"John Doe\",\r\n    \"rfid_sn_left\": \"RFID12345LEFT\",\r\n    \"rfid_sn_right\": \"RFID12345RIGHT\",\r\n    \"phone\": \"+8801712345678\",\r\n    \"email\": \"johndoe@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/check-ins/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"check-ins",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{local}}/check-ins/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"check-ins",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tips",
+					"item": [
+						{
+							"name": "Get Current Tips",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/tips/today",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"tips",
+										"today"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ReFresh Tips",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/tips/refresh",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"tips",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Mark As Done",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time_package_id\": 3,\r\n    \"name\": \"John Doe\",\r\n    \"rfid_sn_left\": \"RFID12345LEFT\",\r\n    \"rfid_sn_right\": \"RFID12345RIGHT\",\r\n    \"phone\": \"+8801712345678\",\r\n    \"email\": \"johndoe@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/tips/7/mark-done",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"tips",
+										"7",
+										"mark-done"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "payments",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/payments",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"payments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/customers/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time_package_id\": 2,\r\n    \"name\": \"John Doe\",\r\n    \"rfid_sn_left\": \"RFID12345LEFT\",\r\n    \"rfid_sn_right\": \"RFID12345RIGHT\",\r\n    \"phone\": \"+8801712345678\",\r\n    \"email\": \"johndoe@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/customers",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"time_package_id\": 3,\r\n    \"name\": \"John Doe\",\r\n    \"rfid_sn_left\": \"RFID12345LEFT\",\r\n    \"rfid_sn_right\": \"RFID12345RIGHT\",\r\n    \"phone\": \"+8801712345678\",\r\n    \"email\": \"johndoe@example.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/customers/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Notifications",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/notifications",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"notifications"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "10",
+											"disabled": true
+										},
+										{
+											"key": "unread",
+											"value": "1",
+											"description": "0,1 true given only unread notifications",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/notifications/7b4f505e-02e7-43f5-874f-68790e7e980b",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"notifications",
+										"7b4f505e-02e7-43f5-874f-68790e7e980b"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "mark-all-as-read",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/notifications/mark-all-as-read",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"notifications",
+										"mark-all-as-read"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete ALL",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/notifications/delete-all",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"notifications",
+										"delete-all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Progress Page",
+					"item": [
+						{
+							"name": "Get Progress Page",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/progress-page",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"progress-page"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check-ins-activity",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/check-ins-activity?group_by=daily&per_page=1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"check-ins-activity"
+									],
+									"query": [
+										{
+											"key": "group_by",
+											"value": "daily",
+											"description": "weekly,monthly,daily"
+										},
+										{
+											"key": "per_page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Ai-insights",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/progress-page/ai-insights",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"progress-page",
+										"ai-insights"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "2",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Public Details",
+			"item": [
+				{
+					"name": "System",
+					"item": [
+						{
+							"name": "Get System info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/system-info",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"system-info"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Dynamic Pages",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/dynamic-pages",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"dynamic-pages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Dynamic Page",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/dynamic-pages/privacy-policy",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"dynamic-pages",
+										"privacy-policy"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Faqs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/faqs",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"faqs"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "10",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Stepper",
+					"item": [
+						{
+							"name": "Get All Steppers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/stepper-pages",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"stepper-pages"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Stepper",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/stepper-pages/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"stepper-pages",
+										"1"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Packages",
+					"item": [
+						{
+							"name": "Get All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/packages",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"packages"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{local}}/stepper-pages/1",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"stepper-pages",
+										"1"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "1",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Bin",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Auth",
+							"item": [
+								{
+									"name": "Singin&Logout",
+									"item": [
+										{
+											"name": "Login",
+											"event": [
+												{
+													"listen": "prerequest",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												},
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"var jsonData = pm.response.json();\r",
+															"\r",
+															"if (jsonData && jsonData.token) {\r",
+															"    pm.globals.set('token', jsonData.token);\r",
+															"    console.log('Token set globally: ' + jsonData.token);\r",
+															"} else {\r",
+															"    console.error('Token not found in the response');\r",
+															"}"
+														],
+														"type": "text/javascript",
+														"packages": {},
+														"requests": {}
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "email",
+															"value": "admin@admin.com",
+															"type": "text"
+														},
+														{
+															"key": "password",
+															"value": "12345678",
+															"type": "text"
+														},
+														{
+															"key": "email",
+															"value": "husoaib422@gmail.com",
+															"description": "user",
+															"type": "text",
+															"disabled": true
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/login",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"login"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Logout",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"url": {
+													"raw": "{{local}}/logout",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"logout"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Refresh Token",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{local}}/refresh-token",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"refresh-token"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Forget Password",
+									"item": [
+										{
+											"name": "Forget Password",
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "email",
+															"value": "user@user.com",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/forget-password",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"forget-password"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Reset Password",
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "email",
+															"value": "user@user.com",
+															"type": "text"
+														},
+														{
+															"key": "password",
+															"value": "12345678",
+															"type": "text"
+														},
+														{
+															"key": "password_confirmation",
+															"value": "12345678",
+															"type": "text"
+														},
+														{
+															"key": "token",
+															"value": "1234",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/reset-password",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"reset-password"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "PassWord Reset Verify OTP",
+											"request": {
+												"auth": {
+													"type": "noauth"
+												},
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "email",
+															"value": "husoaib422@gmail.com",
+															"type": "text"
+														},
+														{
+															"key": "otp",
+															"value": "5265",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/verify-otp",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"verify-otp"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Profile",
+									"item": [
+										{
+											"name": "User info",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{local}}/me",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"me"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update Profile",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "name",
+															"value": "jakob milton",
+															"type": "text"
+														},
+														{
+															"key": "phone",
+															"value": "+018-11121976",
+															"type": "text"
+														},
+														{
+															"key": "avatar",
+															"type": "file",
+															"src": "/E:/Download/istockphoto-2220159718-612x612.jpg"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/update-profile",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"update-profile"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Password Change",
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "current_password",
+															"value": "12345678",
+															"type": "text"
+														},
+														{
+															"key": "new_password",
+															"value": "123456781",
+															"type": "text"
+														},
+														{
+															"key": "new_password_confirmation",
+															"value": "12345678",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/update-password",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"update-password"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Profile Delete",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{local}}/delete-profile",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"delete-profile"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Bin",
+									"item": [
+										{
+											"name": "Sign-up",
+											"item": [
+												{
+													"name": "Registation",
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json",
+																"type": "text"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "name",
+																	"value": "helal",
+																	"type": "text"
+																},
+																{
+																	"key": "email",
+																	"value": "husoaib425@gmail.com",
+																	"type": "text"
+																},
+																{
+																	"key": "password",
+																	"value": "12345678",
+																	"type": "text"
+																},
+																{
+																	"key": "password_confirmation",
+																	"value": "12345678",
+																	"type": "text"
+																}
+															]
+														},
+														"url": {
+															"raw": "{{local}}/register",
+															"host": [
+																"{{local}}"
+															],
+															"path": [
+																"register"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "Verify Email",
+													"event": [
+														{
+															"listen": "test",
+															"script": {
+																"exec": [
+																	"var jsonData = pm.response.json();\r",
+																	"\r",
+																	"if (jsonData && jsonData.token) {\r",
+																	"    pm.globals.set('token', jsonData.token);\r",
+																	"    console.log('Token set globally: ' + jsonData.token);\r",
+																	"} else {\r",
+																	"    console.error('Token not found in the response');\r",
+																	"}"
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														},
+														{
+															"listen": "prerequest",
+															"script": {
+																"exec": [
+																	""
+																],
+																"type": "text/javascript",
+																"packages": {}
+															}
+														}
+													],
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json",
+																"type": "text"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "email",
+																	"value": "husoaib422@gmail.com",
+																	"type": "text"
+																},
+																{
+																	"key": "otp",
+																	"value": "1234",
+																	"type": "text"
+																}
+															]
+														},
+														"url": {
+															"raw": "{{local}}/verify-email",
+															"host": [
+																"{{local}}"
+															],
+															"path": [
+																"verify-email"
+															]
+														}
+													},
+													"response": []
+												},
+												{
+													"name": "Resent OTP",
+													"request": {
+														"auth": {
+															"type": "noauth"
+														},
+														"method": "POST",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "application/json",
+																"type": "text"
+															}
+														],
+														"body": {
+															"mode": "formdata",
+															"formdata": [
+																{
+																	"key": "email",
+																	"value": "husoaib422@gmail.com",
+																	"type": "text"
+																}
+															]
+														},
+														"url": {
+															"raw": "{{local}}/resend-otp",
+															"host": [
+																"{{local}}"
+															],
+															"path": [
+																"resend-otp"
+															]
+														}
+													},
+													"response": []
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Systems",
+							"item": [
+								{
+									"name": "Dynamic Page",
+									"item": [
+										{
+											"name": "Get All",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{local}}/admin/dynamic-pages",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"dynamic-pages"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get Single",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{local}}/admin/dynamic-pages/1",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"dynamic-pages",
+														"1"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Create",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n        \"page_title\": \"Privacy Policy2\",\r\n        \"page_content\": \"<p>This Privacy Policy governs the manner in which Dēmos: A Network for Ideas and Action, Ltd. (“Dēmos”, “Us” or “We”) &nbsp;collects, uses, maintains, and discloses information collected from users (“Users” or “You”) of its website located at <a href=\\\"http://www.demos.org/\\\">www.demos.org</a> (the “Website”).</p><h2><strong>The Types of Information Dēmos Collects</strong></h2><ul><li><strong>Non-personally identifiable information</strong></li></ul><p>Dēmos may collect non-personally identifiable information about you whenever you visit the Website. Such information may include the Internet Protocol (IP) address of the computer you used, the type of browser and operating system you used, the date and time you visited the Website, the Internet address of the site from which you linked to the Website, and which pages you viewed on the Website.</p><ul><li><strong>Web browser cookies</strong></li></ul><p>Dēmos may use “cookies” to enhance your experience with the Website. A cookie is a small text file that is stored in your computer so that the Website can recognize you and keep track of your preferences. Use of cookies help to measure aggregate web statistics, such as collecting the number of Users to the Website, the number of repeat Users and the most popular webpages, to serve relevant content to a User as he/she browses the Internet, and for other purposes. You may choose to set your web browser to refuse cookies, or to alert you when cookies are being sent. If you do so, however, some parts of the Website may not function properly.</p><h2><strong>Personally identifiable information</strong></h2><p>Dēmos, on its own and through select third party vendors, collects personally identifiable information, such as names, email addresses, mailing addresses and credit card information, from Users when they voluntarily provide such information to us, including, for example, when a User signs up to join our email list, purchases tickets to an event, completes the contact form, responds to a job posting, or donates money via the Website. Complete credit card information, however, is not stored.&nbsp;</p><h2><strong>How Dēmos Uses the Information that it Collects</strong></h2><p>Dēmos uses Users’ personal information to better understand how Users use the Website so that we can improve the Website and its offerings. Dēmos also uses Users’ personal information for the purpose for which the Users provided the information, in other words, for example, to add you to our email list, to process your request for tickets to an event, to respond to your inquiry, to consider you for a job, or to process your donation. If you &nbsp;affirmatively opt-in to our email list, we will add you to our list. If at any time you wish to stop receiving emails from us, please follow the unsubscribe instructions at the bottom of any email Demos sends you.</p><h2><strong>How Dēmos Protects User Information</strong></h2><p>Dēmos adopts appropriate data collection, storage, and processing practices and security measures to help protect against unauthorized access, alteration, disclosure or destruction of your personal information, but Dēmos cannot guarantee that your information is 100% secure. Your credit card information is not stored by Dēmos.</p><h2><strong>Sharing Personal Information</strong></h2><p>We use third party service providers, including, for example, Mailchimp, Rallybound, EventBrite and HiringThing, to help us operate the Website and administer activities on our behalf, such as collecting donations online and registering Users for events. These third party vendors may have access to User information, which becomes subject to their individual privacy policies. In addition, Dēmos shares personal information about Users with Dēmos Action, our sister organization. Dēmos may also share personal information with other like-minded organizations. In addition, Dēmos will share personally identifiable information about Users when required to do so by law, or in the good faith belief that such action is necessary to comply with state and federal laws or to respond to a court order, subpoena, or search warrant. Demos will also share personally identifiable information if it believes it is necessary to protect the rights, property, and safety of Demos or others.</p><p>Dēmos may also share personally identifiable information in connection with, or during negotiations of, any merger, sale of company assets, financing or acquisition of all or a portion of its business to another company. Moreover, Dēmos may share personally identifiable information about a User upon obtaining the User’s consent.</p><p>Dēmos may share generic aggregated demographic information not linked to any personally identifiable information regarding Users with third parties.</p><h2><strong>Third Party Websites</strong></h2><p>Dēmos may provide links from the Website to other websites. A link to a third party website does not constitute an endorsement of the linked site or its service. Moreover, it is important to understand that Dēmos does not control the content or links that appear on these third party websites and is not responsible for the practices employed by websites linked to or from the Website. These websites and services have their own privacy policies. Browsing and interaction on any other website, including websites that have a link to or from our Website, is subject to that website’s own terms and policies. This Privacy Policy covers only information collected through the use of Demos’<strong> </strong>Website.</p><h2><strong>Do Not Track Signals</strong></h2><p>Dēmos does not currently respond to web browser “do not track” signals.</p><h2><strong>Compliance with Children’s Online Privacy Protection Act</strong></h2><p>Protecting the privacy of the young is especially important. For that reason, Dēmos never collects information on the Website from those it knows are under 13, and no part of the Website is structured to attract anyone under 13. If Dēmos becomes aware of having information about anyone under 13, it will promptly delete the information.</p><h2><strong>California Privacy Rights</strong></h2><p>If you reside in California and have provided your personally identifiable information to Dēmos, you may request information once per calendar year about Dēmos’ disclosures of certain categories of your personally identifiable information to third parties for their direct marketing purposes. Such requests must be submitted to Dēmos by email addressed to <a href=\\\"mailto:info@demos.org\\\">info@demos.org</a>.</p><h2><strong>Changes to this Privacy Policy</strong></h2><p>Dēmos may update this Privacy Policy at any time. The date at the bottom of this page indicates when the Privacy Policy was last updated. Changes become effective upon posting. Your continued use of the Website after the Privacy Policy has been modified means that you accept the revised Privacy Policy. Dēmos encourages Users to frequently check this page for any changes to stay informed about what information Dēmos collects and how it uses that information. You acknowledge and agree that it is your responsibility to review this Privacy Policy periodically and become aware of any modifications since your last visit.</p><h2><strong>Your Acceptance of These Terms</strong></h2><p>By using Dēmos’ Website, you signify your acceptance of this Privacy Policy. If you do not agree to this policy, please do not use the Website. Your continued use of the Website following the posting of changes to this Privacy Policy will be deemed your acceptance of those changes.</p><h2><strong>Contacting Dēmos</strong></h2><p>If you have any questions about this Privacy Policy or anything relating to the Website, please contact Dēmos at <a href=\\\"mailto:info@demos.org\\\">info@demos.org</a>.</p>\",\r\n        \"status\": \"active\"\r\n    }",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{local}}/admin/dynamic-pages",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"dynamic-pages"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n        \"page_title\": \"Privacy Policy3\",\r\n        \"page_content\": \"<p>This Privacy Policy governs the manner in which Dēmos: A Network for Ideas and Action, Ltd. (“Dēmos”, “Us” or “We”) &nbsp;collects, uses, maintains, and discloses information collected from users (“Users” or “You”) of its website located at <a href=\\\"http://www.demos.org/\\\">www.demos.org</a> (the “Website”).</p><h2><strong>The Types of Information Dēmos Collects</strong></h2><ul><li><strong>Non-personally identifiable information</strong></li></ul><p>Dēmos may collect non-personally identifiable information about you whenever you visit the Website. Such information may include the Internet Protocol (IP) address of the computer you used, the type of browser and operating system you used, the date and time you visited the Website, the Internet address of the site from which you linked to the Website, and which pages you viewed on the Website.</p><ul><li><strong>Web browser cookies</strong></li></ul><p>Dēmos may use “cookies” to enhance your experience with the Website. A cookie is a small text file that is stored in your computer so that the Website can recognize you and keep track of your preferences. Use of cookies help to measure aggregate web statistics, such as collecting the number of Users to the Website, the number of repeat Users and the most popular webpages, to serve relevant content to a User as he/she browses the Internet, and for other purposes. You may choose to set your web browser to refuse cookies, or to alert you when cookies are being sent. If you do so, however, some parts of the Website may not function properly.</p><h2><strong>Personally identifiable information</strong></h2><p>Dēmos, on its own and through select third party vendors, collects personally identifiable information, such as names, email addresses, mailing addresses and credit card information, from Users when they voluntarily provide such information to us, including, for example, when a User signs up to join our email list, purchases tickets to an event, completes the contact form, responds to a job posting, or donates money via the Website. Complete credit card information, however, is not stored.&nbsp;</p><h2><strong>How Dēmos Uses the Information that it Collects</strong></h2><p>Dēmos uses Users’ personal information to better understand how Users use the Website so that we can improve the Website and its offerings. Dēmos also uses Users’ personal information for the purpose for which the Users provided the information, in other words, for example, to add you to our email list, to process your request for tickets to an event, to respond to your inquiry, to consider you for a job, or to process your donation. If you &nbsp;affirmatively opt-in to our email list, we will add you to our list. If at any time you wish to stop receiving emails from us, please follow the unsubscribe instructions at the bottom of any email Demos sends you.</p><h2><strong>How Dēmos Protects User Information</strong></h2><p>Dēmos adopts appropriate data collection, storage, and processing practices and security measures to help protect against unauthorized access, alteration, disclosure or destruction of your personal information, but Dēmos cannot guarantee that your information is 100% secure. Your credit card information is not stored by Dēmos.</p><h2><strong>Sharing Personal Information</strong></h2><p>We use third party service providers, including, for example, Mailchimp, Rallybound, EventBrite and HiringThing, to help us operate the Website and administer activities on our behalf, such as collecting donations online and registering Users for events. These third party vendors may have access to User information, which becomes subject to their individual privacy policies. In addition, Dēmos shares personal information about Users with Dēmos Action, our sister organization. Dēmos may also share personal information with other like-minded organizations. In addition, Dēmos will share personally identifiable information about Users when required to do so by law, or in the good faith belief that such action is necessary to comply with state and federal laws or to respond to a court order, subpoena, or search warrant. Demos will also share personally identifiable information if it believes it is necessary to protect the rights, property, and safety of Demos or others.</p><p>Dēmos may also share personally identifiable information in connection with, or during negotiations of, any merger, sale of company assets, financing or acquisition of all or a portion of its business to another company. Moreover, Dēmos may share personally identifiable information about a User upon obtaining the User’s consent.</p><p>Dēmos may share generic aggregated demographic information not linked to any personally identifiable information regarding Users with third parties.</p><h2><strong>Third Party Websites</strong></h2><p>Dēmos may provide links from the Website to other websites. A link to a third party website does not constitute an endorsement of the linked site or its service. Moreover, it is important to understand that Dēmos does not control the content or links that appear on these third party websites and is not responsible for the practices employed by websites linked to or from the Website. These websites and services have their own privacy policies. Browsing and interaction on any other website, including websites that have a link to or from our Website, is subject to that website’s own terms and policies. This Privacy Policy covers only information collected through the use of Demos’<strong> </strong>Website.</p><h2><strong>Do Not Track Signals</strong></h2><p>Dēmos does not currently respond to web browser “do not track” signals.</p><h2><strong>Compliance with Children’s Online Privacy Protection Act</strong></h2><p>Protecting the privacy of the young is especially important. For that reason, Dēmos never collects information on the Website from those it knows are under 13, and no part of the Website is structured to attract anyone under 13. If Dēmos becomes aware of having information about anyone under 13, it will promptly delete the information.</p><h2><strong>California Privacy Rights</strong></h2><p>If you reside in California and have provided your personally identifiable information to Dēmos, you may request information once per calendar year about Dēmos’ disclosures of certain categories of your personally identifiable information to third parties for their direct marketing purposes. Such requests must be submitted to Dēmos by email addressed to <a href=\\\"mailto:info@demos.org\\\">info@demos.org</a>.</p><h2><strong>Changes to this Privacy Policy</strong></h2><p>Dēmos may update this Privacy Policy at any time. The date at the bottom of this page indicates when the Privacy Policy was last updated. Changes become effective upon posting. Your continued use of the Website after the Privacy Policy has been modified means that you accept the revised Privacy Policy. Dēmos encourages Users to frequently check this page for any changes to stay informed about what information Dēmos collects and how it uses that information. You acknowledge and agree that it is your responsibility to review this Privacy Policy periodically and become aware of any modifications since your last visit.</p><h2><strong>Your Acceptance of These Terms</strong></h2><p>By using Dēmos’ Website, you signify your acceptance of this Privacy Policy. If you do not agree to this policy, please do not use the Website. Your continued use of the Website following the posting of changes to this Privacy Policy will be deemed your acceptance of those changes.</p><h2><strong>Contacting Dēmos</strong></h2><p>If you have any questions about this Privacy Policy or anything relating to the Website, please contact Dēmos at <a href=\\\"mailto:info@demos.org\\\">info@demos.org</a>.</p>\",\r\n        \"status\": \"active\"\r\n    }",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{local}}/admin/dynamic-pages/4",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"dynamic-pages",
+														"4"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Delete",
+											"request": {
+												"method": "DELETE",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{local}}/admin/dynamic-pages/4",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"dynamic-pages",
+														"4"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "System Configuration",
+									"item": [
+										{
+											"name": "Get System info",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{local}}/admin/system/settings",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"system",
+														"settings"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update System Info",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "title",
+															"value": " Initial update",
+															"type": "text"
+														},
+														{
+															"key": "system_name",
+															"value": " Initial update",
+															"type": "text"
+														},
+														{
+															"key": "email",
+															"value": " hello@email.com",
+															"type": "text"
+														},
+														{
+															"key": "contact_number",
+															"value": " +8800000000",
+															"type": "text"
+														},
+														{
+															"key": "company_open_hour",
+															"value": " 18 HOUR",
+															"type": "text"
+														},
+														{
+															"key": "copyright_text",
+															"value": " © Copyright 2025, All right reserved.",
+															"type": "text"
+														},
+														{
+															"key": "logo",
+															"type": "file",
+															"src": "/C:/Users/USER/Downloads/Frame 2147226893 (2).png"
+														},
+														{
+															"key": "favicon",
+															"type": "file",
+															"src": "/C:/Users/USER/Downloads/Frame 2147226893.png"
+														},
+														{
+															"key": "address",
+															"value": " \"TEST",
+															"type": "text"
+														},
+														{
+															"key": "description",
+															"value": " \"TEST",
+															"type": "text"
+														},
+														{
+															"key": "footer_logo",
+															"type": "file",
+															"src": "/C:/Users/USER/Downloads/Layer_2.png"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/admin/system/settings",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"system",
+														"settings"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Smtp Mail Configuration",
+									"item": [
+										{
+											"name": "Get",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{local}}/admin/system/mail-settings",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"system",
+														"mail-settings"
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Update",
+											"request": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "formdata",
+													"formdata": [
+														{
+															"key": "mail_mailer",
+															"value": "smtp",
+															"type": "text"
+														},
+														{
+															"key": "mail_host",
+															"value": "test.mail.com",
+															"type": "text"
+														},
+														{
+															"key": "mail_port",
+															"value": "443",
+															"type": "text"
+														},
+														{
+															"key": "mail_username",
+															"value": "helal",
+															"type": "text"
+														},
+														{
+															"key": "mail_password",
+															"value": "bfbsdhjk",
+															"type": "text"
+														},
+														{
+															"key": "mail_encryption",
+															"value": "ssl",
+															"type": "text"
+														},
+														{
+															"key": "mail_from_address",
+															"value": "helal@mail.com",
+															"type": "text"
+														}
+													]
+												},
+												"url": {
+													"raw": "{{local}}/admin/system/mail-settings",
+													"host": [
+														"{{local}}"
+													],
+													"path": [
+														"admin",
+														"system",
+														"mail-settings"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "live",
+			"value": "https://dashboard.belavines.com/api"
+		},
+		{
+			"key": "local",
+			"value": "http://belavines.test/api"
+		}
+	]
+}
