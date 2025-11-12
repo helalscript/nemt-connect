@@ -28,7 +28,7 @@ class User extends Authenticatable implements JWTSubject
         'avatar',
         'cover_photo',
         'user_name',
-        'brithdate',
+        'brith_date',
         'gender',
         'password',
         'otp',
@@ -69,7 +69,7 @@ class User extends Authenticatable implements JWTSubject
     protected function casts(): array
     {
         return [
-            'birthdate' => 'date:Y-m-d',
+            'brith_date' => 'date:Y-m-d',
             'is_otp_verified' => 'boolean',
             'email_verified_at' => 'datetime',
             'otp_expires_at' => 'datetime',

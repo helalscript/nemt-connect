@@ -12,16 +12,18 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone')->nullable()->unique();
             $table->string('user_name')->nullable()->unique();
-            $table->date('brithdate')->nullable();
+            $table->date('brith_date')->nullable();
             $table->string('avatar')->nullable();
             $table->string('cover_photo')->nullable();
             $table->enum('gender', ['male', 'female', 'others'])->nullable();
-            $table->enum('role', ['user', 'admin'])->default('user');
+            $table->enum('role', ['admin', 'driver', 'dispatcher', 'viewer'])->default('driver');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('otp')->nullable();
             $table->boolean('is_otp_verified')->default(false);

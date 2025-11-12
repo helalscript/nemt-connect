@@ -26,16 +26,7 @@ class DatabaseSeeder extends Seeder
             'two_factor_confirmed_at' => null,
         ]);
 
-        User::factory()->create([
-            'name' => 'User',
-            'email' => 'user@user.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'user',
-            'two_factor_secret' => null,
-            'two_factor_recovery_codes' => null,
-            'two_factor_confirmed_at' => null,
-            'user_name' => 'new_user',
-        ]);
+        
         $this->call(SystemSettingSeeder::class);
         $this->call([DynamicPageSeeder::class]);
         // $this->call(FaqSeeder::class);

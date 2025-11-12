@@ -18,8 +18,13 @@ export default function AuthSplitLayout({
 
     return (
         <div className="relative grid h-dvh flex-col items-center justify-center px-8 sm:px-0 lg:max-w-none lg:grid-cols-2 lg:px-0">
-            <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
-                <div className="absolute inset-0 bg-zinc-900" />
+            <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r"  style={{
+    backgroundImage: `url('https://images.unsplash.com/photo-1668456186589-a182ed97df44?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1332')`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}>
+                {/* <div className="absolute inset-0 bg-zinc-900" /> */}
                 <Link
                     href={home()}
                     className="relative z-20 flex items-center text-lg font-medium"

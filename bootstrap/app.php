@@ -31,7 +31,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role_check' => \App\Http\Middleware\RoleCheckMiddleWare::class,
             'is_admin' => \App\Http\Middleware\IsAdmin::class,
-            'is_user' => \App\Http\Middleware\IsUser::class,
+            'is_driver' => \App\Http\Middleware\IsDriver::class,
         ]);
     })
     ->withExceptions(function ($exceptions) {

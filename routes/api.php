@@ -43,9 +43,9 @@ Route::group(['middleware' => 'auth:api'], function ($router) {
     Route::post('/update-password', [UserController::class, 'changePassword']);
 });
 
-// this is for user
-Route::group(['middleware' => ['auth:api', 'is_user']], function ($router) {
-    Route::apiResource('customers', CustomerController::class);
+// this is for driver
+Route::group(['middleware' => ['auth:api', 'is_driver']], function ($router) {
+    // Route::apiResource('customers', CustomerController::class);
 });
 
 // this is for admin
