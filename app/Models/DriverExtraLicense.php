@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class DriverExtraLicense extends Model
+{
+    protected $fillable = [
+        'driver_profile_id',
+        'license_number',
+        'type_id',
+        'type_name',
+        'document_url',
+        'effective_date',
+        'expiration_date',
+        'status_id',
+        'status_note',
+        'is_verified',
+        'verified_at',
+        'verified_by',
+    ];
+    
+    protected $casts = [
+        'effective_date' => 'date',
+        'expiration_date' => 'date',
+        'is_verified' => 'boolean',
+        'verified_at' => 'datetime',
+    ];
+    
+    public function driver()
+    {
+        return $this->belongsTo(DriverProfile::class);
+    }
+}
