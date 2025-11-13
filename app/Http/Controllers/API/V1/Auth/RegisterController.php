@@ -7,6 +7,7 @@ use App\Mail\OtpMail;
 use App\Models\Contractor;
 use App\Models\License;
 use App\Notifications\UserRegistrationNotification;
+use App\Notifications\WelcomeNotification;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -129,6 +130,8 @@ class RegisterController extends Controller
             $user->otp_expires_at = null;
             $user->save();
 
+            // user get a welcome notification
+            $user->notify(new WelcomeNotification());
 
 
             // Notify admins about the new registration
