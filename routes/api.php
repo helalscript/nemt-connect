@@ -11,7 +11,10 @@ use App\Http\Controllers\API\V1\Auth\ResetPasswordController;
 use App\Http\Controllers\API\V1\Auth\SocialLoginController;
 use App\Http\Controllers\API\V1\Auth\UserController;
 use App\Http\Controllers\API\V1\Public\GeneralSettingController;
+use App\Http\Controllers\API\V1\User\AppLanguageController;
 use App\Http\Controllers\API\V1\User\CustomerController;
+use App\Http\Controllers\API\V1\Public\StepperPageController as PublicStepperPageController;
+use App\Http\Controllers\API\V1\User\NotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,7 +48,15 @@ Route::group(['middleware' => 'auth:api'], function ($router) {
 
 // this is for driver
 Route::group(['middleware' => ['auth:api', 'is_driver']], function ($router) {
-    // Route::apiResource('customers', CustomerController::class);
+    
+    // notifications
+    Route::apiResource('notifications', NotificationController::class)->only(['index', 'show']);
+    Route::post('notifications/mark-all-as-read', [NotificationController::class, 'markAllAsRead']);
+    Route::delete('notifications/delete-all', [NotificationController::class, 'deleteAll']);
+
+    // app languages
+    Route::get('app-languages', [AppLanguageController::class, 'index']);
+    Route::post('set-language', [AppLanguageController::class, 'setLanguage']);
 });
 
 // this is for admin
@@ -64,5 +75,7 @@ Route::group(['middleware' => ['auth:api', 'is_admin'], 'prefix' => 'admin'], fu
 Route::get('system-info', [GeneralSettingController::class, 'getSystemInfo']);
 Route::get('dynamic-pages', [GeneralSettingController::class, 'getDynamicPages']);
 Route::get('dynamic-pages/{page_slug}', [GeneralSettingController::class, 'showDaynamicPage']);
-
+Route::apiResource('stepper-pages', PublicStepperPageController::class)->only(['index', 'show']);
 //  require __DIR__ . '/api_v1.php';
+
+ require __DIR__ . '/driver.php';

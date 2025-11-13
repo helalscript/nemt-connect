@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
         
         $this->call(SystemSettingSeeder::class);
         $this->call([DynamicPageSeeder::class]);
+        $this->call([StepperPageSeeder::class]);
+        $this->call([AppLanguageSeeder::class]);
         // $this->call(FaqSeeder::class);
     }
 }
