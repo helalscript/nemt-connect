@@ -7,6 +7,6 @@ Route::group(['middleware' => ['guest:api']], function ($router) {
 // Route::group(['middleware' => ['guest:api', 'throttle:2,1']], function ($router) {
     // register
     Route::post('register', [DriverRegisterController::class, 'register']);
-    Route::post('/verify-email', [DriverRegisterController::class, 'VerifyEmail']);
+    Route::post('/verify-phone', [DriverRegisterController::class, 'VerifyPhone']);
     Route::post('/resend-otp', [DriverRegisterController::class, 'ResendOtp']);
 });

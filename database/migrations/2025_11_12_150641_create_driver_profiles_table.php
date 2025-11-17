@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->enum('gender', ['M', 'F', 'O'])->nullable();
             $table->date('birth_date')->nullable();
             $table->string('phone', 20);
+            
             // $table->string('email')->unique();
             // $table->string('password');
 
@@ -37,11 +38,7 @@ return new class extends Migration {
             // $table->string('zip_code', 10)->nullable();
 
             // ============ Status ============
-            $table->integer('status_id')->default(1);
-            // 1 = Active
-            // 2 = Inactive
-            // 3 = Suspended
-            // 4 = Pending Approval
+            $table->integer('status_id')->default(1); // 1 = Active, 2 = Inactive, 3 = Suspended,  4 = Pending Approval
 
             // ============ Online/Offline Status ============
             $table->boolean('is_online')->default(false);
@@ -59,11 +56,8 @@ return new class extends Migration {
             $table->foreignId('current_vehicle_id')->nullable()->constrained('vehicles')->onDelete('set null');
 
             // ============ Credentials Overall Status ============
-            $table->integer('credentials_status_id')->default(4);
-            // 1 = Approved
-            // 2 = Pending Verification
-            // 3 = Rejected
-            // 4 = Incomplete
+            $table->integer('credentials_status_id')->default(4); // 1 = Approved, 2 = Pending Verification, 3 = Rejected, 4 = Incomplete
+            
             $table->text('credentials_status_note')->nullable();
 
             // ============ MTA Approval ============
