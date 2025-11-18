@@ -51,7 +51,12 @@ return new class extends Migration {
             $table->decimal('current_speed', 5, 2)->nullable(); // km/h
             $table->string('current_heading')->nullable(); // N, NE, E, SE, S, SW, W, NW
             $table->timestamp('location_updated_at')->nullable();
-
+            // ============ Working Area ============
+            $table->string('working_area_name')->nullable(); // Working area name
+            $table->decimal('working_area_lat', 10, 7)->nullable();
+            $table->decimal('working_area_lng', 10, 7)->nullable();
+            $table->decimal('working_area_radius', 10, 2)->nullable(); // in miles
+            
             // ============ Current Vehicle Assignment ============
             $table->foreignId('current_vehicle_id')->nullable()->constrained('vehicles')->onDelete('set null');
 
