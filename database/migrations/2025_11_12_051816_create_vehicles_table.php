@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             
             // ============ Sentry Info ============
-            $table->unsignedBigInteger('sentry_vehicle_id')->nullable()->unique(); // ID from Sentry
+            $table->string('sentry_vehicle_id')->nullable()->unique(); // ID from Sentry
             
             // ============ Basic Vehicle Information ============
             $table->string('vin', 17)->unique(); // Vehicle Identification Number

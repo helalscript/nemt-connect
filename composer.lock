@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "06e90595d8abad1b60ca12afa2c6b034",
+    "content-hash": "8a06a12d124c47441fc87f0c74058042",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1226,6 +1226,75 @@
                 "source": "https://github.com/inertiajs/inertia-laravel/tree/v2.0.10"
             },
             "time": "2025-09-28T21:21:36+00:00"
+        },
+        {
+            "name": "kssadi/log-tracker",
+            "version": "2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KsSadi/Laravel-Log-Tracker.git",
+                "reference": "56aa12417332119c43b6b2d61c1ed74de3df82a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KsSadi/Laravel-Log-Tracker/zipball/56aa12417332119c43b6b2d61c1ed74de3df82a6",
+                "reference": "56aa12417332119c43b6b2d61c1ed74de3df82a6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.1",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "orchestra/testbench": ">=3.6 <=9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "LogTracker": "Kssadi\\LogTracker\\Facades\\LogTracker"
+                    },
+                    "providers": [
+                        "Kssadi\\LogTracker\\LogTrackerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kssadi\\LogTracker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KsSadi",
+                    "email": "mdsadi4@gmail.com",
+                    "homepage": "https://github.com/kssadi",
+                    "role": "Programmer"
+                }
+            ],
+            "description": "A powerful, intuitive, and efficient log viewer for Laravel applications.",
+            "homepage": "https://github.com/kssadi/log-tracker",
+            "keywords": [
+                "Ks Sadi",
+                "Laravel Log Tracker",
+                "Laravel Log Viewer",
+                "Log Tracker By Sadi",
+                "debugging",
+                "laravel",
+                "log tracker",
+                "log viewer",
+                "logs",
+                "monitoring"
+            ],
+            "support": {
+                "issues": "https://github.com/kssadi/log-tracker/issues",
+                "source": "https://github.com/kssadi/log-tracker"
+            },
+            "time": "2025-09-29T12:13:07+00:00"
         },
         {
             "name": "laravel/fortify",
@@ -6479,6 +6548,56 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/v2.3.0"
             },
             "time": "2024-12-21T16:25:41+00:00"
+        },
+        {
+            "name": "twilio/sdk",
+            "version": "8.8.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twilio/twilio-php",
+                "reference": "130d9be431ff8184849bf9e9e47ae5e152246072"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/130d9be431ff8184849bf9e9e47ae5e152246072",
+                "reference": "130d9be431ff8184849bf9e9e47ae5e152246072",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "guzzlehttp/guzzle": "^6.3 || ^7.0",
+                "phpunit/phpunit": ">=7.0 < 10"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "An HTTP client to execute the API requests"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Twilio\\": "src/Twilio/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Twilio API Team",
+                    "email": "api@twilio.com"
+                }
+            ],
+            "description": "A PHP wrapper for Twilio's API",
+            "homepage": "https://github.com/twilio/twilio-php",
+            "keywords": [
+                "api",
+                "sms",
+                "twilio"
+            ],
+            "time": "2025-11-11T07:50:54+00:00"
         },
         {
             "name": "tymon/jwt-auth",
