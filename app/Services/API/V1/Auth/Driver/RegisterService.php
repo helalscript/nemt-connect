@@ -96,7 +96,7 @@ class RegisterService
 
     private function sendOtpToPhoneOrEmail($user, $type = 'phone')
     {
-        $otp = 1234;
+        $otp = 1234; // For testing purposes, you can comment this line. In production, uncomment it.
         $otpExpiresAt = Carbon::now()->addMinutes(60);
 
         if ($type === 'email') {
@@ -120,7 +120,7 @@ class RegisterService
                 $user->save();
 
                 return true;
-        } catch (Exception $e) {
+            } catch (Exception $e) {
                 Log::error('Twilio OTP send failed: '.$e->getMessage());
                 throw new Exception('Failed to send OTP: '.$e->getMessage());
             }
@@ -310,5 +310,66 @@ class RegisterService
         return Helper::fileUpload($file, $folder, $name ?? $folder);
     }
 
+    public function verifyPhone(array $validatedData)
+    {
+        try {
+            $user = User::where('phone', $validatedData['phone'])->first();
 
+            // ! Check if phone has already been verified
+            if ($user->phone_verified_at !== null) {
+                return Helper::jsonResponse(false, 'Your phone has already been verified. Please login to continue.', 409);
+            }
+
+            if ($user->otp !== $validatedData['otp']) {
+                return Helper::jsonResponse(false, 'Invalid OTP. Please try again.', 422);
+            }
+
+            // * Check if OTP has expired
+            if (Carbon::parse($user->otp_expires_at)->isPast()) {
+                return Helper::jsonResponse(false, 'OTP has expired. Please request a new OTP.', 422);
+            }
+
+            // * Verify the phone
+            $user->phone_verified_at = now();
+            $user->otp = null;
+            $user->otp_expires_at = null;
+            $user->save();
+
+            // Notify admins about the new registration
+            // $admins = User::where('role', 'admin')->get();
+            // foreach ($admins as $admin) {
+            //     $admin->notify(new UserRegistrationNotification($user, "{$user->name} has joined the platform. Please review their details."));
+            // }
+
+            // Generate an access token for the user
+            $token = auth('api')->login($user);
+
+            return [
+                'token_type' => 'bearer',
+                'token' => $token,
+                'data' => $user];
+        } catch (Exception $e) {
+            Log::error('RegisterService::resendOtp'.$e->getMessage());
+            throw new Exception('Failed to send OTP. Please try again later.');
+        }
+    }
+
+    public function resendOtp(array $validatedData)
+    {
+        try {
+            $user = User::where('phone', $validatedData['phone'])->first();
+            if (!$user) {
+                throw new Exception('User not found.');
+                }
+            if ($user->phone_verified_at !== null) {
+                throw new Exception('Phone already verified.');
+            }
+            $this->sendOtpToPhoneOrEmail($user, 'phone');
+
+            return true;
+        } catch (Exception $e) {
+            Log::error('Driver:RegisterService::resendOtp'.$e->getMessage());
+            throw new Exception($e->getMessage());
+        }
+    }
 }
