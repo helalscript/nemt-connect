@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             
             // ============ Sentry Info ============
-            $table->unsignedBigInteger('sentry_vehicle_id')->nullable()->unique(); // ID from Sentry
+            $table->string('sentry_vehicle_id')->nullable()->unique(); // ID from Sentry
             
             // ============ Basic Vehicle Information ============
             $table->string('vin', 17)->unique(); // Vehicle Identification Number
@@ -105,7 +105,6 @@ return new class extends Migration
             $table->index('type_id');
             $table->index('is_available');
             $table->index(['is_available', 'status_id']); // Composite
-            // $table->index('owner_driver_id');
             // $table->index('current_driver_id');
         });
         

@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->string('name')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->nullable()->unique();
             $table->string('password');
             $table->string('phone')->nullable()->unique();
             $table->string('user_name')->nullable()->unique();
@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->enum('gender', ['male', 'female', 'others'])->nullable();
             $table->enum('role', ['admin', 'driver', 'dispatcher', 'viewer'])->default('driver');
             $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
             $table->string('otp')->nullable();
             $table->boolean('is_otp_verified')->default(false);
             $table->timestamp('otp_expires_at')->nullable();

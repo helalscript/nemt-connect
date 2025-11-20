@@ -22,6 +22,10 @@ class DriverProfile extends Model
         // 'city',
         // 'state_code',
         // 'zip_code',
+        'working_area_name',
+        'working_area_lat',
+        'working_area_lng',
+        'working_area_radius',
         'status_id',
         'is_online',
         'is_available',
@@ -95,7 +99,7 @@ class DriverProfile extends Model
             'arrived_at_pickup',
             'patient_on_board',
             'en_route_to_dropoff',
-            'arrived_at_dropoff'
+            'arrived_at_dropoff',
         ]);
     }
 
@@ -172,7 +176,7 @@ class DriverProfile extends Model
             'current_speed' => $speed,
             'current_heading' => $heading,
             'location_updated_at' => now(),
-            'last_active_at' => now()
+            'last_active_at' => now(),
         ]);
     }
 
@@ -180,7 +184,7 @@ class DriverProfile extends Model
     {
         $this->update([
             'is_online' => true,
-            'last_active_at' => now()
+            'last_active_at' => now(),
         ]);
     }
 
@@ -188,7 +192,7 @@ class DriverProfile extends Model
     {
         $this->update([
             'is_online' => false,
-            'is_available' => true // Reset availability
+            'is_available' => true, // Reset availability
         ]);
     }
 

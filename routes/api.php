@@ -24,10 +24,10 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['guest:api']], function ($router) {
 // Route::group(['middleware' => ['guest:api', 'throttle:2,1']], function ($router) {
-    // register
-    Route::post('register', [RegisterController::class, 'register']);
-    Route::post('/verify-email', [RegisterController::class, 'VerifyEmail']);
-    Route::post('/resend-otp', [RegisterController::class, 'ResendOtp']);
+    // // register
+    // Route::post('register', [RegisterController::class, 'register']);
+    // Route::post('/verify-email', [RegisterController::class, 'VerifyEmail']);
+    // Route::post('/resend-otp', [RegisterController::class, 'ResendOtp']);
     // login
     Route::post('login', [LoginController::class, 'login']);
     // forgot password
@@ -79,3 +79,4 @@ Route::apiResource('stepper-pages', PublicStepperPageController::class)->only(['
 //  require __DIR__ . '/api_v1.php';
 
  require __DIR__ . '/driver.php';
+ require __DIR__ . '/syntry_config.php';
