@@ -16,7 +16,7 @@ class VehicleDmvRegistrationRequest extends FormRequest
         return [
             'dmv_registration' => 'required|array',
             'dmv_registration.license_plate_number' => 'required|string|max:20',
-            'dmv_registration.license_plate_category_id' => 'required|integer',
+            'dmv_registration.license_plate_category_id' => 'required|integer|in:1,2,3,4,5',
             'dmv_registration.state_code' => 'required|string|size:2',
             'dmv_registration.document' => 'nullable|file|mimes:pdf|max:5120',
             'dmv_registration.effective_date' => 'required|date',

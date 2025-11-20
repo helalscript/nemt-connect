@@ -22,6 +22,7 @@ Route::get('/sentry/vehicle-states', function () {
     return Helper::jsonResponse(true, 'Vehicle States fetched successfully', 200, config('sentry.vehicle_states'));
 });
 
+
 // DRIVER
 Route::get('/sentry/driver-status', function () {
     return Helper::jsonResponse(true, 'Driver statuses fetched successfully', 200, config('sentry.driver_status'));
