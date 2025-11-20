@@ -105,7 +105,6 @@ return new class extends Migration
             $table->index('type_id');
             $table->index('is_available');
             $table->index(['is_available', 'status_id']); // Composite
-            // $table->index('owner_driver_id');
             // $table->index('current_driver_id');
         });
         
