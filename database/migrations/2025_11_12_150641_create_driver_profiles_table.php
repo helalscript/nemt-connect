@@ -105,7 +105,7 @@ return new class extends Migration {
             $table->json('restrictions')->nullable(); // ["A2", "B"]
             $table->string('document_url')->nullable(); // Photo of license
             $table->date('effective_date')->nullable();
-            $table->date('expiration_date');
+            $table->date('expiration_date')->nullable();
 
             // Status from Sentry
             $table->integer('status_id')->default(2);
@@ -147,7 +147,7 @@ return new class extends Migration {
             $table->string('type_name')->nullable(); // Stored for reference
             $table->string('document_url')->nullable();
             $table->date('effective_date')->nullable();
-            $table->date('expiration_date');
+            $table->date('expiration_date')->nullable();
 
             // Status
             $table->integer('status_id')->default(2);
@@ -213,7 +213,7 @@ return new class extends Migration {
 
             $table->string('document_url')->nullable();
             $table->date('result_verification_date')->nullable(); // Test date
-            $table->date('expiration_date');
+            $table->date('expiration_date')->nullable();
 
             // Status
             $table->integer('status_id')->default(2);

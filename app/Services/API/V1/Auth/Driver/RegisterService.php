@@ -14,6 +14,7 @@ use App\Models\VehicleDmvRegistration;
 use App\Models\VehicleExtraLicense;
 use App\Models\VehicleInspection;
 use App\Models\VehicleInsurance;
+use App\Notifications\WelcomeNotification;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -334,7 +335,8 @@ class RegisterService
             $user->otp = null;
             $user->otp_expires_at = null;
             $user->save();
-
+            // user get a welcome notification
+            $user->notify(new WelcomeNotification());
             // Notify admins about the new registration
             // $admins = User::where('role', 'admin')->get();
             // foreach ($admins as $admin) {
@@ -365,7 +367,7 @@ class RegisterService
                 throw new Exception('Phone already verified.');
             }
             $this->sendOtpToPhoneOrEmail($user, 'phone');
-
+            
             return true;
         } catch (Exception $e) {
             Log::error('Driver:RegisterService::resendOtp'.$e->getMessage());

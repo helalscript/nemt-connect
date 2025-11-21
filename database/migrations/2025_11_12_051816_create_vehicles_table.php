@@ -20,16 +20,14 @@ return new class extends Migration
             // ============ Basic Vehicle Information ============
             $table->string('vin', 17)->unique(); // Vehicle Identification Number
             $table->string('fleet_number', 50)->nullable(); // Your internal fleet number
-            $table->integer('production_year'); // 2012, 2015, etc.
-            $table->integer('type_id');
+            $table->integer('production_year')->nullable(); // 2012, 2015, etc.
+            $table->integer('type_id')->nullable();
             // 1 = Ambulatory (regular car)
-            // 2 = Wheelchair Accessible
-            // 3 = Stretcher
-            // 4 = Ambulance
-            // 5 = Van
+            // 2 = Ambulance
+            // 3 = Livary
             $table->string('type_name')->nullable(); // Store for reference
-            $table->string('make'); // Ford, Toyota, Mercedes
-            $table->string('model'); // E150 Club Wagon, Sienna, Sprinter
+            $table->string('make')->nullable(); // Ford, Toyota, Mercedes
+            $table->string('model')->nullable(); // E150 Club Wagon, Sienna, Sprinter
             $table->string('color')->nullable(); // White, Black, Silver
             $table->integer('seat_number')->nullable(); // Passenger capacity
             
@@ -37,9 +35,7 @@ return new class extends Migration
             $table->integer('status_id')->default(1);
             // 1 = Active
             // 2 = Inactive
-            // 3 = Under Maintenance
-            // 4 = Out of Service
-            // 5 = Retired
+            // 3 = suspended
             
             // ============ Owner Information ============
             // $table->unsignedBigInteger('owner_driver_profile_id')->nullable(); // Which driver owns/added this
@@ -122,7 +118,7 @@ return new class extends Migration
             $table->string('state_code', 5); // NY, CA, NJ
             $table->string('document_url')->nullable(); // Registration document photo
             $table->date('effective_date')->nullable();
-            $table->date('expiration_date');
+            $table->date('expiration_date')->nullable();
             
             // Status from Sentry
             $table->integer('status_id')->default(2);
@@ -163,7 +159,7 @@ return new class extends Migration
             $table->string('type_name')->nullable();
             $table->string('document_url')->nullable();
             $table->date('effective_date')->nullable();
-            $table->date('expiration_date');
+            $table->date('expiration_date')->nullable();
             
             // Status
             $table->integer('status_id')->default(2);
@@ -195,8 +191,8 @@ return new class extends Migration
             $table->string('agent_name')->nullable();
             $table->string('agent_phone')->nullable();
             $table->string('document_url')->nullable(); // Insurance card photo
-            $table->date('effective_date');
-            $table->date('expiration_date');
+            $table->date('effective_date')->nullable();
+            $table->date('expiration_date')->nullable();
             
             // Coverage details
             $table->decimal('liability_coverage', 12, 2)->nullable(); // $1,000,000
@@ -237,7 +233,7 @@ return new class extends Migration
             $table->string('inspector_name')->nullable();
             $table->string('document_url')->nullable(); // Inspection certificate
             $table->date('effective_date')->nullable(); // Inspection date
-            $table->date('expiration_date');
+            $table->date('expiration_date')->nullable();
             
             // Status
             $table->integer('status_id')->default(2);
