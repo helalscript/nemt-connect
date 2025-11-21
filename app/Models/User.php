@@ -40,6 +40,7 @@ class User extends Authenticatable implements JWTSubject
         'phone_verified_at',
         'last_seen',
         'role',
+        'language_code',
         'status',
     ];
 

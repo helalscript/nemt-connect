@@ -24,6 +24,7 @@ return new class extends Migration {
             $table->string('cover_photo')->nullable();
             $table->enum('gender', ['male', 'female', 'others'])->nullable();
             $table->enum('role', ['admin', 'driver', 'dispatcher', 'viewer'])->default('driver');
+            $table->string('language_code')->default('en');
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->string('otp')->nullable();
