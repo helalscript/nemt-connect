@@ -38,6 +38,10 @@ class DriverProfile extends Model
         'current_vehicle_id',
         'credentials_status_id',
         'credentials_status_note',
+        'is_admin_verified',
+        'admin_verified_at',
+        'admin_verified_by',
+        'admin_verified_note',
         'is_approved_for_mta',
         'emergency_contact_name',
         'emergency_contact_phone',
@@ -46,6 +50,30 @@ class DriverProfile extends Model
         'bank_name',
         'bank_account_number',
         'bank_routing_number',
+    ];
+
+    protected $casts = [
+        'is_admin_verified' => 'boolean',
+        'admin_verified_at' => 'datetime',
+        'is_approved_for_mta' => 'boolean',
+        'emergency_contact_phone' => 'string',
+        'emergency_contact_relationship' => 'string',
+        'bank_account_number' => 'string',
+        'bank_routing_number' => 'string',
+        'birth_date' => 'date',
+        'last_active_at' => 'datetime',
+        'location_updated_at' => 'datetime',
+        'current_lat' => 'decimal:7',
+        'current_lng' => 'decimal:7',
+        'current_speed' => 'decimal:2',
+        'current_heading' => 'string',
+        'current_vehicle_id' => 'foreignId',
+        'credentials_status_id' => 'integer',
+        'credentials_status_note' => 'string',
+        'admin_verified_by' => 'foreignId',
+        'admin_verified_note' => 'string',
+        'bank_account_holder_name' => 'string',
+        'bank_name' => 'string',
     ];
 
     // ============ Relationships ============
