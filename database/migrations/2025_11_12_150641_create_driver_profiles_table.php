@@ -61,7 +61,7 @@ return new class extends Migration {
             $table->foreignId('current_vehicle_id')->nullable()->constrained('vehicles')->onDelete('set null');
 
             // ============ Credentials Overall Status ============
-            $table->integer('credentials_status_id')->default(4); // 1 = Approved, 2 = Pending Verification, 3 = Rejected, 4 = Incomplete
+            $table->integer('credentials_status_id')->default(2); // 1 = Approved, 2 = Pending Verification, 3 = Rejected, 4 = Incomplete
             
             $table->text('credentials_status_note')->nullable();
 
@@ -78,7 +78,12 @@ return new class extends Migration {
             $table->string('bank_name')->nullable();
             $table->string('bank_account_number')->nullable(); // Encrypted
             $table->string('bank_routing_number')->nullable(); // Encrypted
-
+             
+            // ============ ADMIN VERIFIED ============
+            $table->boolean('is_admin_verified')->default(false);
+            $table->timestamp('admin_verified_at')->nullable();
+            $table->foreignId('admin_verified_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->text('admin_verified_note')->nullable();
 
             // ============ Timestamps ============
             $table->timestamps();

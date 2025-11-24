@@ -122,4 +122,9 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function driverProfile()
+    {
+        return $this->hasOne(DriverProfile::class);
+    }
 }
