@@ -3,7 +3,8 @@
 use App\Http\Controllers\API\V1\Auth\Driver\LoginController as DriverLoginController;
 use App\Http\Controllers\API\V1\Auth\Driver\RegisterController as DriverRegisterController;
 use App\Http\Controllers\API\V1\User\AppLanguageController;
-use App\Http\Controllers\API\V1\User\Driver\DriverController;
+use App\Http\Controllers\API\V1\User\Driver\DriverController as DriverProfileController;
+use App\Http\Controllers\API\V1\User\Driver\VehicleController as DriverVehicleController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'driver'], function ($router) {
@@ -24,12 +25,14 @@ Route::group(['prefix' => 'driver'], function ($router) {
         Route::get('app-languages', [AppLanguageController::class, 'index']);
         Route::post('set-language', [AppLanguageController::class, 'setLanguage']);
 
-        // //driver profile
-        Route::get('driver-profile', [DriverController::class, 'driverProfile']);
-        Route::post('driver-profile/update', [DriverController::class, 'updateDriverProfile']);
-        // //driver vehicles
-        // Route::get('vehicles', [DriverVehicleController::class, 'index']);
-        // Route::post('vehicles', [DriverVehicleController::class, 'store']);
+        //driver profile
+        Route::get('driver-profile', [DriverProfileController::class, 'driverProfile']);
+        Route::post('driver-profile/update', [DriverProfileController::class, 'updateDriverProfile']);
+
+        //driver vehicles
+        Route::get('vehicles', [DriverVehicleController::class, 'driverVehicles']);
+        Route::post('vehicles/update', [DriverVehicleController::class, 'updateDriverVehicle']);
+
         // Route::put('vehicles/{id}', [DriverVehicleController::class, 'update']);
         // Route::delete('vehicles/{id}', [DriverVehicleController::class, 'destroy']);
         // driver trips
