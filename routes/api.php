@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\API\V1\Admin\StoreDetailsController;
-use App\Http\Controllers\API\V1\Admin\System\DynamicPageController;
-use App\Http\Controllers\API\V1\Admin\SystemSettingController;
-use App\Http\Controllers\API\V1\Admin\TimePackageController;
 use App\Http\Controllers\API\V1\Auth\LoginController;
 use App\Http\Controllers\API\V1\Auth\LogoutController;
 use App\Http\Controllers\API\V1\Auth\RegisterController;
@@ -11,8 +7,6 @@ use App\Http\Controllers\API\V1\Auth\ResetPasswordController;
 use App\Http\Controllers\API\V1\Auth\SocialLoginController;
 use App\Http\Controllers\API\V1\Auth\UserController;
 use App\Http\Controllers\API\V1\Public\GeneralSettingController;
-use App\Http\Controllers\API\V1\User\AppLanguageController;
-use App\Http\Controllers\API\V1\User\CustomerController;
 use App\Http\Controllers\API\V1\Public\StepperPageController as PublicStepperPageController;
 use App\Http\Controllers\API\V1\User\NotificationController;
 use Illuminate\Http\Request;
@@ -23,7 +17,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth');
 
 Route::group(['middleware' => ['guest:api']], function ($router) {
-// Route::group(['middleware' => ['guest:api', 'throttle:2,1']], function ($router) {
+    // Route::group(['middleware' => ['guest:api', 'throttle:2,1']], function ($router) {
     // // register
     // Route::post('register', [RegisterController::class, 'register']);
     // Route::post('/verify-email', [RegisterController::class, 'VerifyEmail']);
@@ -44,32 +38,14 @@ Route::group(['middleware' => 'auth:api'], function ($router) {
     Route::get('/me', [UserController::class, 'me']);
     Route::post('/update-profile', [UserController::class, 'updateProfile']);
     Route::post('/update-password', [UserController::class, 'changePassword']);
-});
 
-// this is for driver
-Route::group(['middleware' => ['auth:api', 'is_driver']], function ($router) {
-    
     // notifications
     Route::apiResource('notifications', NotificationController::class)->only(['index', 'show']);
     Route::post('notifications/mark-all-as-read', [NotificationController::class, 'markAllAsRead']);
     Route::delete('notifications/delete-all', [NotificationController::class, 'deleteAll']);
-
-    // app languages
-    Route::get('app-languages', [AppLanguageController::class, 'index']);
-    Route::post('set-language', [AppLanguageController::class, 'setLanguage']);
 });
 
-// this is for admin
-Route::group(['middleware' => ['auth:api', 'is_admin'], 'prefix' => 'admin'], function ($router) {
-    Route::apiResource('dynamic-pages', DynamicPageController::class);
-    Route::group(['prefix' => 'system'], function ($router) {
-        Route::get('settings', [SystemSettingController::class, 'index']);
-        Route::post('settings', [SystemSettingController::class, 'update']);
-        Route::get('mail-settings', [SystemSettingController::class, 'getMailSetting']);
-        Route::post('mail-settings', [SystemSettingController::class, 'updateMailSetting']);
-        Route::get('clear-cache', [SystemSettingController::class, 'clearCache']);
-    });
-});
+
 
 // this is for public
 Route::get('system-info', [GeneralSettingController::class, 'getSystemInfo']);
@@ -78,5 +54,6 @@ Route::get('dynamic-pages/{page_slug}', [GeneralSettingController::class, 'showD
 Route::apiResource('stepper-pages', PublicStepperPageController::class)->only(['index', 'show']);
 //  require __DIR__ . '/api_v1.php';
 
- require __DIR__ . '/driver.php';
- require __DIR__ . '/syntry_config.php';
+require __DIR__.'/driver.php';
+require __DIR__.'/admin.php';
+require __DIR__.'/syntry_config.php';

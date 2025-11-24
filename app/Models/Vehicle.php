@@ -22,7 +22,7 @@ class Vehicle extends Model
         'color',
         'seat_number',
         'status_id',
-        'owner_driver_id',
+        'owner_driver_profile_id',
         'ownership_type',
         'is_wheelchair_accessible',
         'is_stretcher_accessible',

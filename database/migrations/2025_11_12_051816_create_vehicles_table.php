@@ -38,7 +38,7 @@ return new class extends Migration
             // 3 = suspended
             
             // ============ Owner Information ============
-            // $table->unsignedBigInteger('owner_driver_profile_id')->nullable(); // Which driver owns/added this
+            $table->unsignedBigInteger('owner_driver_profile_id')->nullable(); // Which driver owns/added this
             $table->enum('ownership_type', ['company', 'driver_owned'])->default('driver_owned');
             
             // ============ Vehicle Features ============

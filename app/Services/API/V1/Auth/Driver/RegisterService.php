@@ -234,6 +234,7 @@ class RegisterService
             'color' => data_get($data, 'color'),
             'seat_number' => data_get($data, 'seat_number'),
             'vehicle_status_id' => data_get($data, 'vehicle_status_id'),
+            'owner_driver_profile_id' => $driverProfile->id,
         ]);
     }
 
