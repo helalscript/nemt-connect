@@ -165,31 +165,33 @@ return [
     ],
 
     // ENDORSEMENTS
-    'dmv_endorsements' => [
-        "H" => "Hazmat",
-        "N" => "Tank",
-        "P" => "Passenger",
-        "S" => "School Bus",
-        "T" => "Double/Triple Trailer",
-        "X" => "Tank + Hazmat"
-    ],
+    // 'dmv_endorsements' => [
+    //     "H" => "Hazmat",
+    //     "N" => "Tank",
+    //     "P" => "Passenger",
+    //     "S" => "School Bus",
+    //     "T" => "Double/Triple Trailer",
+    //     "X" => "Tank + Hazmat"
+    // ],
+    'dmv_endorsements' =>[ 'F', 'G', 'H', 'M', 'N', 'P', 'R', 'S', 'T', 'W', 'X' ],
 
     // RESTRICTIONS
-    'dmv_restrictions' => [
-        "A" => "Corrective Lenses",
-        "B" => "Outside Mirrors",
-        "C" => "Daytime Driving Only",
-        "D" => "Auto Transmission Only",
-        "E" => "No Manual Transmission CMV",
-        "F" => "No Air Brakes",
-        "G" => "No Night Driving",
-        "K" => "CDL Intrastate Only",
-        "L" => "No Air Brake",
-        "M" => "No Class A Passenger Vehicle",
-        "N" => "No Class A/B Passenger Vehicle",
-        "O" => "No Tractor Trailer",
-        "Z" => "No Full Air Brake"
-    ],
+    // 'dmv_restrictions' => [
+    //     "A" => "Corrective Lenses",
+    //     "B" => "Outside Mirrors",
+    //     "C" => "Daytime Driving Only",
+    //     "D" => "Auto Transmission Only",
+    //     "E" => "No Manual Transmission CMV",
+    //     "F" => "No Air Brakes",
+    //     "G" => "No Night Driving",
+    //     "K" => "CDL Intrastate Only",
+    //     "L" => "No Air Brake",
+    //     "M" => "No Class A Passenger Vehicle",
+    //     "N" => "No Class A/B Passenger Vehicle",
+    //     "O" => "No Tractor Trailer",
+    //     "Z" => "No Full Air Brake"
+    // ],
+    'dmv_restrictions' => [ 'A', 'A1', 'A2', 'A3', 'A4', 'B', 'C', 'D', 'E', 'E1', 'F', 'F1', 'G', 'H', 'I', 'I1', 'I2', 'I3', 'I4', 'K', 'L', 'L1', 'L2', 'M', 'N', 'N1', 'N2', 'O', 'O1', 'O2', 'P', 'P1', 'Q', 'R', 'U', 'V', 'V1', 'W', 'X', 'X1', 'Y', 'Z', 'Z1', '4', '5', '1' ],
 
     // EXTRA COMMERCIAL LICENSE TYPES
     'extra_commercial_license_types' => [
