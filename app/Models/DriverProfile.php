@@ -78,6 +78,11 @@ class DriverProfile extends Model
 
     // ============ Relationships ============
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function dmvLicense()
     {
         return $this->hasOne(DriverDmvLicense::class);
@@ -233,4 +238,6 @@ class DriverProfile extends Model
     {
         $this->update(['is_available' => true]);
     }
+
+    // public function ve
 }
