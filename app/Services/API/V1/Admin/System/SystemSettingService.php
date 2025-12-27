@@ -167,7 +167,7 @@ class SystemSettingService
             Artisan::call('route:clear');
             Artisan::call('view:clear');
             Artisan::call('optimize:clear');
-            Artisan::call('optimize');
+            // Artisan::call('optimize');
 
             return true;
         } catch (Exception $e) {
