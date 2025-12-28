@@ -25,10 +25,12 @@ class JoinRequestService
     {
         try {
             $per_page = $request->per_page ?? 10;
-            $driver = DriverProfile::with(['user', 'dmvLicense', 'extraLicenses', 'backgroundCheck', 'mtaDrugScreen', 'certifications', 'currentVehicle', 'vehicleAssignments' => function ($q) {
+            $driver = DriverProfile::with(['user'=>function($q){
+                $q->select('id', 'name', 'email', 'phone');
+            }, 'dmvLicense', 'extraLicenses', 'backgroundCheck', 'mtaDrugScreen', 'certifications', 'currentVehicle', 'vehicleAssignments' => function ($q) {
                 with(['dmvRegistration', 'extraLicenses', 'insurance', 'inspection']);
             }, 'trips', 'shifts', 'ratings'])->paginate($per_page);
-
+ 
             return $driver;
 
         } catch (Exception $e) {

@@ -15,7 +15,7 @@ class DriverDmvLicenseRequest extends FormRequest
     {
         return [
             'dmv_license' => 'required|array',
-            'dmv_license.license_number' => 'required|string|max:20',
+            'dmv_license.license_number' => 'required|string|max:20|unique:driver_dmv_licenses,license_number',
             'dmv_license.state_code' => 'required|string|size:2',
             'dmv_license.license_class' => 'required|string|max:5',
             'dmv_license.endorsements' => 'array',

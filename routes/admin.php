@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\V1\Admin\DriverController;
 use App\Http\Controllers\API\V1\Admin\JoinRequestController;
 use App\Http\Controllers\API\V1\Admin\System\DynamicPageController;
 use App\Http\Controllers\API\V1\Admin\SystemSettingController;
@@ -17,4 +18,7 @@ Route::group(['middleware' => ['auth:api', 'is_admin'], 'prefix' => 'admin','as'
     });
 
     Route::apiResource('join-requests', JoinRequestController::class);
+
+    // Driver routes
+    Route::apiResource('drivers', DriverController::class);
 });
