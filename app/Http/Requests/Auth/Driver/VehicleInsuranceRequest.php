@@ -15,7 +15,7 @@ class VehicleInsuranceRequest extends FormRequest
     {
         return [
             'insurance' => 'required|array',
-            'insurance.policy_number' => 'required|string|max:100',
+            'insurance.policy_number' => 'required|string|max:100|unique:vehicle_insurances,policy_number',
             'insurance.insurer_name' => 'required|string|max:150',
             'insurance.document' => 'nullable|file|mimes:pdf|max:5120',
             'insurance.effective_date' => 'required|date',
