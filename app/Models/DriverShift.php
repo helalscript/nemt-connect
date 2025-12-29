@@ -16,8 +16,8 @@ class DriverShift extends Model
     ];
     protected $casts = [
         'shift_start_time' => 'time',
-        'shift_end_time' => 'time',
-        'shift_date' => 'date',
+        'shift_end_time'   => 'time',
+        'shift_date'       => 'date',
     ];
 
     public function driver()

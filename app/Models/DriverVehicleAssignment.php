@@ -20,9 +20,9 @@ class DriverVehicleAssignment extends Model
     ];
     
     protected $casts = [
-        'is_primary' => 'boolean',
-        'is_active' => 'boolean',
-        'assigned_at' => 'datetime',
+        'is_primary'    => 'boolean',
+        'is_active'     => 'boolean',
+        'assigned_at'   => 'datetime',
         'unassigned_at' => 'datetime',
     ];
     

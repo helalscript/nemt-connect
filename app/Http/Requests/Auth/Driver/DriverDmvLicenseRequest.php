@@ -14,16 +14,16 @@ class DriverDmvLicenseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'dmv_license' => 'required|array',
-            'dmv_license.license_number' => 'required|string|max:20|unique:driver_dmv_licenses,license_number',
-            'dmv_license.state_code' => 'required|string|size:2',
-            'dmv_license.license_class' => 'required|string|max:5',
-            'dmv_license.endorsements' => 'array',
-            'dmv_license.endorsements.*' => 'string|max:5',
-            'dmv_license.restrictions' => 'array',
-            'dmv_license.restrictions.*' => 'string|max:5',
-            'dmv_license.document' => 'nullable|file|mimes:pdf|max:5120',
-            'dmv_license.effective_date' => 'required|date',
+            'dmv_license'                 => 'required|array',
+            'dmv_license.license_number'  => 'required|string|max:20|unique:driver_dmv_licenses,license_number',
+            'dmv_license.state_code'      => 'required|string|size:2',
+            'dmv_license.license_class'   => 'required|string|max:5',
+            'dmv_license.endorsements'    => 'array',
+            'dmv_license.endorsements.*'  => 'string|max:5',
+            'dmv_license.restrictions'    => 'array',
+            'dmv_license.restrictions.*'  => 'string|max:5',
+            'dmv_license.document'        => 'nullable|file|mimes:pdf|max:5120',
+            'dmv_license.effective_date'  => 'required|date',
             'dmv_license.expiration_date' => 'required|date|after_or_equal:dmv_license.effective_date',
         ];
     }

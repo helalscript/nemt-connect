@@ -45,8 +45,7 @@ class RegisterService
                 $existingUser->update([
                     'email' => data_get($validatedData, 'email'),
                     'first_name' => data_get($validatedData, 'first_name'),
-                    'last_name' => data_get($validatedData, 'last_name'),
-                    'phone' => data_get($validatedData, 'phone'),
+                    'last_name' => data_get($validatedData, 'last_name'),                   'phone' => data_get($validatedData, 'phone'),
                     'password' => Hash::make(rand(100000, 999999)),
                     'role' => 'driver',
                 ]);
@@ -56,10 +55,10 @@ class RegisterService
                     'email' => data_get($validatedData, 'email'),
                     'first_name' => data_get($validatedData, 'first_name'),
                     'last_name' => data_get($validatedData, 'last_name'),
+                    'birth_date' => data_get($validatedData, 'birth_date'),
                     'phone' => data_get($validatedData, 'phone'),
                     'password' => Hash::make(rand(100000, 999999)),
                     'gender' => data_get($validatedData, 'gender'),
-                    'birth_date' => data_get($validatedData, 'birth_date'),
                     'role' => 'driver',
                 ];
             }

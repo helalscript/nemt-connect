@@ -27,20 +27,20 @@ class SystemSetting extends Model
         'footer_logo'
     ];
     protected $casts = [
-        'id' => 'integer',
-        'title' => 'string',
-        'system_name' => 'string',
-        'email' => 'string',
-        'contact_number' => 'string',
+        'id'                => 'integer',
+        'title'             => 'string',
+        'system_name'       => 'string',
+        'email'             => 'string',
+        'contact_number'    => 'string',
         'company_open_hour' => 'string',
-        'copyright_text' => 'string',
-        'logo' => 'string',
-        'favicon' => 'string',
-        'address' => 'string',
-        'description' => 'string',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-        'footer_logo' => 'string'
+        'copyright_text'    => 'string',
+        'logo'              => 'string',
+        'favicon'           => 'string',
+        'address'           => 'string',
+        'description'       => 'string',
+        'created_at'        => 'datetime',
+        'updated_at'        => 'datetime',
+        'footer_logo'       => 'string'
     ];
 
     public function getFileUrlAttribute($value): ?string

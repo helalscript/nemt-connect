@@ -4,6 +4,7 @@ use App\Http\Controllers\API\V1\Admin\DriverController;
 use App\Http\Controllers\API\V1\Admin\JoinRequestController;
 use App\Http\Controllers\API\V1\Admin\System\DynamicPageController;
 use App\Http\Controllers\API\V1\Admin\SystemSettingController;
+use App\Http\Controllers\API\V1\Admin\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 // this is for admin
@@ -21,4 +22,7 @@ Route::group(['middleware' => ['auth:api', 'is_admin'], 'prefix' => 'admin','as'
 
     // Driver routes
     Route::apiResource('drivers', DriverController::class);
+
+    // Vehicle routes
+    Route::apiResource('vehicles', VehicleController::class);
 });

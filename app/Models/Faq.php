@@ -11,7 +11,7 @@ class Faq extends Model
 
     protected $casts = [
         'question' => 'string',
-        'answer' => 'string',
-        'status' => 'string',
+        'answer'   => 'string',
+        'status'   => 'string',
     ];
 }

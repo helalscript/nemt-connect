@@ -24,12 +24,12 @@ class DriverDmvLicense extends Model
     ];
     
     protected $casts = [
-        'endorsements' => 'array',
-        'restrictions' => 'array',
-        'effective_date' => 'date',
+        'endorsements'    => 'array',
+        'restrictions'    => 'array',
+        'effective_date'  => 'date',
         'expiration_date' => 'date',
-        'is_verified' => 'boolean',
-        'verified_at' => 'datetime',
+        'is_verified'     => 'boolean',
+        'verified_at'     => 'datetime',
     ];
     
     public function driver()
