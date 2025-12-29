@@ -21,24 +21,24 @@ class Trip extends Model
     ];
     
     protected $casts = [
-        'date' => 'date',
-        'scheduled_pickup_time' => 'datetime',
-        'latest_pickup_time' => 'datetime',
-        'scheduled_dropoff_time' => 'datetime',
-        'pickup_arrival_time' => 'datetime',
-        'actual_pickup_time' => 'datetime',
-        'actual_dropoff_time' => 'datetime',
-        'assigned_at' => 'datetime',
-        'cancelled_at' => 'datetime',
-        'rejected_at' => 'datetime',
-        'custom_price_set_at' => 'datetime',
-        'last_modified_at' => 'datetime',
-        'signature_captured_at' => 'datetime',
-        'procedures' => 'array', // JSON to array
-        'is_low_vehicle_required' => 'boolean',
-        'is_congestion_surcharge_route' => 'boolean',
-        'is_confirmed' => 'boolean',
-        'is_covid_transport' => 'boolean',
+        'date'                               => 'date',
+        'scheduled_pickup_time'              => 'datetime',
+        'latest_pickup_time'                 => 'datetime',
+        'scheduled_dropoff_time'             => 'datetime',
+        'pickup_arrival_time'                => 'datetime',
+        'actual_pickup_time'                 => 'datetime',
+        'actual_dropoff_time'                => 'datetime',
+        'assigned_at'                        => 'datetime',
+        'cancelled_at'                       => 'datetime',
+        'rejected_at'                        => 'datetime',
+        'custom_price_set_at'                => 'datetime',
+        'last_modified_at'                   => 'datetime',
+        'signature_captured_at'              => 'datetime',
+        'procedures'                         => 'array', // JSON to array
+        'is_low_vehicle_required'            => 'boolean',
+        'is_congestion_surcharge_route'      => 'boolean',
+        'is_confirmed'                       => 'boolean',
+        'is_covid_transport'                 => 'boolean',
         'is_done_by_not_integrated_provider' => 'boolean'
     ];
     

@@ -17,11 +17,11 @@ class AppLanguage extends Model
     ];
 
     protected $casts = [
-        'name' => 'string',
-        'code' => 'string',
-        'flag_icon' => 'string',
+        'name'       => 'string',
+        'code'       => 'string',
+        'flag_icon'  => 'string',
         'is_default' => 'boolean',
-        'status' => 'boolean',
+        'status'     => 'boolean',
     ];
 
     public function getFlagIconAttribute($value): string|null

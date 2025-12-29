@@ -15,11 +15,11 @@ class StepperPage extends Model
     ];
 
     protected $casts = [
-        'title' => 'string',
+        'title'       => 'string',
         'description' => 'string',
-        'image' => 'string',
-        'order_no' => 'integer',
-        'status' => 'string',
+        'image'       => 'string',
+        'order_no'    => 'integer',
+        'status'      => 'string',
     ];
     public function getImageAttribute($value): string|null
     {

@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         // ============ Driver Profiles Table ============
-        Schema::create('driver_profiles', function (Blueprint $table) {
+        Schema::create('driver_profiles', function (Blueprint $table) { 
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained('users')->onDelete('set null');
             // ============ Sentry Info ============

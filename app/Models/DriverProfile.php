@@ -53,30 +53,35 @@ class DriverProfile extends Model
     ];
 
     protected $casts = [
-        'is_admin_verified' => 'boolean',
-        'admin_verified_at' => 'datetime',
-        'is_approved_for_mta' => 'boolean',
-        'emergency_contact_phone' => 'string',
+        'is_admin_verified'              => 'boolean',
+        'admin_verified_at'              => 'datetime',
+        'is_approved_for_mta'            => 'boolean',
+        'emergency_contact_phone'        => 'string',
         'emergency_contact_relationship' => 'string',
-        'bank_account_number' => 'string',
-        'bank_routing_number' => 'string',
-        'birth_date' => 'date',
-        'last_active_at' => 'datetime',
-        'location_updated_at' => 'datetime',
-        'current_lat' => 'decimal:7',
-        'current_lng' => 'decimal:7',
-        'current_speed' => 'decimal:2',
-        'current_heading' => 'string',
-        'current_vehicle_id' => 'string',
-        'credentials_status_id' => 'integer',
-        'credentials_status_note' => 'string',
-        'admin_verified_by' => 'string',
-        'admin_verified_note' => 'string',
-        'bank_account_holder_name' => 'string',
-        'bank_name' => 'string',
+        'bank_account_number'            => 'string',
+        'bank_routing_number'            => 'string',
+        'birth_date'                     => 'date',
+        'last_active_at'                 => 'datetime',
+        'location_updated_at'            => 'datetime',
+        'current_lat'                    => 'decimal:7',
+        'current_lng'                    => 'decimal:7',
+        'current_speed'                  => 'decimal:2',
+        'current_heading'                => 'string',
+        'current_vehicle_id'             => 'string',
+        'credentials_status_id'          => 'integer',
+        'credentials_status_note'        => 'string',
+        'admin_verified_by'              => 'string',
+        'admin_verified_note'            => 'string',
+        'bank_account_holder_name'       => 'string',
+        'bank_name'                      => 'string',
     ];
 
     // ============ Relationships ============
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function dmvLicense()
     {
@@ -233,4 +238,6 @@ class DriverProfile extends Model
     {
         $this->update(['is_available' => true]);
     }
+
+    // public function ve
 }

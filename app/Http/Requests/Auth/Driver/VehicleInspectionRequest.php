@@ -14,9 +14,9 @@ class VehicleInspectionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'inspection' => 'required|array',
-            'inspection.document' => 'nullable|file|mimes:pdf|max:5120',
-            'inspection.effective_date' => 'required|date',
+            'inspection'                 => 'required|array',
+            'inspection.document'        => 'nullable|file|mimes:pdf|max:5120',
+            'inspection.effective_date'  => 'required|date',
             'inspection.expiration_date' => 'required|date|after_or_equal:inspection.effective_date',
         ];
     }
