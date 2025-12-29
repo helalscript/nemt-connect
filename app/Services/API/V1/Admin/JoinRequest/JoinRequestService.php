@@ -25,12 +25,14 @@ class JoinRequestService
     {
         try {
             $per_page = $request->per_page ?? 10;
-            $driver = DriverProfile::with(['user'=>function($q){
+            $driver = DriverProfile::with(['user' => function ($q) {
                 $q->select('id', 'name', 'email', 'phone');
             }, 'dmvLicense', 'extraLicenses', 'backgroundCheck', 'mtaDrugScreen', 'certifications', 'currentVehicle', 'vehicleAssignments' => function ($q) {
                 with(['dmvRegistration', 'extraLicenses', 'insurance', 'inspection']);
-            }, 'trips', 'shifts', 'ratings'])->paginate($per_page);
- 
+            }, 'trips', 'shifts', 'ratings'])
+                ->whereRelation('user', 'phone_verified_at', '!=', null)
+                ->paginate($per_page);
+
             return $driver;
 
         } catch (Exception $e) {
@@ -63,8 +65,10 @@ class JoinRequestService
     public function show(int $id)
     {
         try {
-            $driver = DriverProfile::with(['user', 'dmvLicense', 'extraLicenses', 'backgroundCheck', 'mtaDrugScreen', 'certifications', 'currentVehicle', 'vehicleAssignments' => function ($q) {
-                $q->with(['vehicle'=>function($q){
+            $driver = DriverProfile::with(['user' => function ($q) {
+                $q->select('id', 'name', 'email', 'phone')->where('phone_verified_at', '!=', null);
+            }, 'dmvLicense', 'extraLicenses', 'backgroundCheck', 'mtaDrugScreen', 'certifications', 'currentVehicle', 'vehicleAssignments' => function ($q) {
+                $q->with(['vehicle' => function ($q) {
                     $q->with(['dmvRegistration', 'extraLicenses', 'insurance', 'inspection']);
                 }])->get();
             }, 'trips', 'shifts', 'ratings'])->find($id);

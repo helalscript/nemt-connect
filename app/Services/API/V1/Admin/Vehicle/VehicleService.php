@@ -2,6 +2,7 @@
 
 namespace App\Services\API\V1\Admin\Vehicle;
 
+use App\Models\Vehicle;
 use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,18 @@ class VehicleService
      *
      * @return mixed
      */
-    public function index($request)
+    public function index($request) 
     {
         try {
+            $perPage   = $request->per_page ?? 10;
+            $page      = $request->page ?? 1;
+            $pageCount = $perPage * $page;
+            $search    = $request->search ?? '';
+            $vehicles = Vehicle::with(['dmvRegistration','extraLicenses','insurances','inspections'])
+            ->latest()
+            ->paginate($perPage, ['*'], 'page', $page, $pageCount);
+
+            return $vehicles;
             
         } catch (Exception $e) {
          Log::error("VehicleService::index" . $e->getMessage());
