@@ -14,9 +14,9 @@ class DriverBackgroundCheckRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'background_check' => 'nullable|array',
-            'background_check.document' => 'nullable|file|mimes:pdf|max:5120',
-            'background_check.effective_date' => 'nullable|date|required_with:background_check',
+            'background_check'                 => 'nullable|array',
+            'background_check.document'        => 'nullable|file|mimes:pdf|max:5120',
+            'background_check.effective_date'  => 'nullable|date|required_with:background_check',
             'background_check.expiration_date' => 'nullable|date|required_with:background_check|after_or_equal:background_check.effective_date',
         ];
     }

@@ -22,11 +22,11 @@ class DriverBackgroundCheck extends Model
     ];
     
     protected $casts = [
-        'effective_date' => 'date',
+        'effective_date'  => 'date',
         'expiration_date' => 'date',
-        'is_cleared' => 'boolean',
-        'is_verified' => 'boolean',
-        'verified_at' => 'datetime',
+        'is_cleared'      => 'boolean',
+        'is_verified'     => 'boolean',
+        'verified_at'     => 'datetime',
     ];
     
     public function driver()

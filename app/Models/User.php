@@ -23,6 +23,8 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name',
+        'first_name',
+        'last_name',
         'email',
         'phone',
         'avatar',
@@ -72,16 +74,16 @@ class User extends Authenticatable implements JWTSubject
     protected function casts(): array
     {
         return [
-            'brith_date' => 'date:Y-m-d',
-            'is_otp_verified' => 'boolean',
-            'email_verified_at' => 'datetime',
-            'otp_expires_at' => 'datetime',
+            'brith_date'                     => 'date:Y-m-d',
+            'is_otp_verified'                => 'boolean',
+            'email_verified_at'              => 'datetime',
+            'otp_expires_at'                 => 'datetime',
             'reset_password_token_expire_at' => 'datetime',
-            'last_seen' => 'datetime',
-            'password' => 'hashed',
-            'created_at' => 'datetime',
-            'updated_at' => 'datetime',
-            'deleted_at' => 'datetime',
+            'last_seen'                      => 'datetime',
+            'password'                       => 'hashed',
+            'created_at'                     => 'datetime',
+            'updated_at'                     => 'datetime',
+            'deleted_at'                     => 'datetime',
         ];
     }
 

@@ -23,10 +23,10 @@ class DriverMtaDrugScreen extends Model
     
     protected $casts = [
         'result_verification_date' => 'date',
-        'expiration_date' => 'date',
-        'is_passed' => 'boolean',
-        'is_verified' => 'boolean',
-        'verified_at' => 'datetime',
+        'expiration_date'          => 'date',
+        'is_passed'                => 'boolean',
+        'is_verified'              => 'boolean',
+        'verified_at'              => 'datetime',
     ];
     
     public function driver()
