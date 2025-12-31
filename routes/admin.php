@@ -19,6 +19,8 @@ Route::group(['middleware' => ['auth:api', 'is_admin'], 'prefix' => 'admin','as'
     });
 
     Route::apiResource('join-requests', JoinRequestController::class);
+    Route::post('join-requests/accept/{id}', [JoinRequestController::class, 'accept']);
+    Route::post('join-requests/reject/{id}', [JoinRequestController::class, 'reject']);
 
     // Driver routes
     Route::apiResource('drivers', DriverController::class);

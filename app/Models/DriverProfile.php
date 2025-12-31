@@ -8,72 +8,86 @@ class DriverProfile extends Model
 {
     protected $fillable = [
         'user_id',
+        // ============ Sentry Info ============
         'sentry_driver_id',
+        // ============ Basic Information ============
         'first_name',
         'last_name',
-        'social_security_number',
+        'social_security_number', // Last 4 digits only
         'gender',
         'birth_date',
-        'phone',
-        // 'email',
-        // 'password',
-        // 'profile_photo',
-        // 'address',
-        // 'city',
-        // 'state_code',
-        // 'zip_code',
-        'working_area_name',
-        'working_area_lat',
-        'working_area_lng',
-        'working_area_radius',
-        'status_id',
+        'phone', // Phone number
+        // ============ Status ============
+        'status_id', // Status ID
+        // ============ Online/Offline Status ============
         'is_online',
         'is_available',
         'last_active_at',
+        // ============ Current Location ============
         'current_lat',
         'current_lng',
         'current_speed',
         'current_heading',
         'location_updated_at',
+        // ============ Working Area ============
+        'working_area_name',
+        'working_area_lat',
+        'working_area_lng',
+        'working_area_radius',
+        // ============ Current Vehicle Assignment ============
         'current_vehicle_id',
+        // ============ Credentials Overall Status ============
         'credentials_status_id',
         'credentials_status_note',
+        // ============ MTA Approval ============
+        'is_approved_for_mta',
+        // ============ Emergency Contact ============
+        'emergency_contact_name',
+        'emergency_contact_phone',
+        'emergency_contact_relationship',
+         // ============ Banking Info (for payments) ============
+         'bank_account_holder_name',
+         'bank_name',
+         'bank_account_number',
+         'bank_routing_number',
+        // ============ ADMIN VERIFIED ============
         'is_admin_verified',
         'admin_verified_at',
         'admin_verified_by',
         'admin_verified_note',
-        'is_approved_for_mta',
-        'emergency_contact_name',
-        'emergency_contact_phone',
-        'emergency_contact_relationship',
-        'bank_account_holder_name',
-        'bank_name',
-        'bank_account_number',
-        'bank_routing_number',
+        // ============ ADMIN REJECTED ============
+        'is_admin_rejected',
+        'admin_rejected_at',
+        'admin_rejected_by',
+        'admin_rejected_reason',
     ];
 
     protected $casts = [
-        'is_admin_verified'              => 'boolean',
-        'admin_verified_at'              => 'datetime',
-        'is_approved_for_mta'            => 'boolean',
-        'emergency_contact_phone'        => 'string',
+        'is_admin_verified' => 'boolean',
+        'admin_verified_at' => 'datetime',
+        'is_approved_for_mta' => 'boolean',
+        'emergency_contact_phone' => 'string',
         'emergency_contact_relationship' => 'string',
-        'bank_account_number'            => 'string',
-        'bank_routing_number'            => 'string',
-        'birth_date'                     => 'date',
-        'last_active_at'                 => 'datetime',
-        'location_updated_at'            => 'datetime',
-        'current_lat'                    => 'decimal:7',
-        'current_lng'                    => 'decimal:7',
-        'current_speed'                  => 'decimal:2',
-        'current_heading'                => 'string',
-        'current_vehicle_id'             => 'string',
-        'credentials_status_id'          => 'integer',
-        'credentials_status_note'        => 'string',
-        'admin_verified_by'              => 'string',
-        'admin_verified_note'            => 'string',
-        'bank_account_holder_name'       => 'string',
-        'bank_name'                      => 'string',
+        'bank_account_number' => 'string',
+        'bank_routing_number' => 'string',
+        'birth_date' => 'date',
+        'last_active_at' => 'datetime',
+        'location_updated_at' => 'datetime',
+        'current_lat' => 'decimal:7',
+        'current_lng' => 'decimal:7',
+        'current_speed' => 'decimal:2',
+        'current_heading' => 'string',
+        'current_vehicle_id' => 'string',
+        'credentials_status_id' => 'integer',
+        'credentials_status_note' => 'string',
+        'is_admin_rejected' => 'boolean',
+        'admin_rejected_at' => 'datetime',
+        'admin_rejected_by' => 'string',
+        'admin_rejected_reason' => 'string',
+        'admin_verified_by' => 'string',
+        'admin_verified_note' => 'string',
+        'bank_account_holder_name' => 'string',
+        'bank_name' => 'string',
     ];
 
     // ============ Relationships ============

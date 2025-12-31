@@ -71,4 +71,31 @@ class JoinRequestController extends Controller
     {
         //
     }
+
+    public function accept(string $id)
+    {
+        try {
+            $joinRequest = $this->joinRequestService->accept($id);
+            return Helper::jsonResponse(true, 'Join request accepted successfully', 200, $joinRequest);
+        } catch (Exception $e) {
+            Log::error('JoinRequestController::accept'.$e->getMessage());
+
+            return Helper::jsonErrorResponse($e->getMessage(), 500);
+        }
+    }
+
+    public function reject(string $id, Request $request)
+    {
+        $validatedData = $request->validate([
+            'reason' => 'required|string|max:1000',
+        ]);
+        try {
+            $joinRequest = $this->joinRequestService->reject($id, $validatedData);
+            return Helper::jsonResponse(true, 'Join request rejected successfully', 200, $joinRequest);
+        } catch (Exception $e) {
+            Log::error('JoinRequestController::reject'.$e->getMessage());
+ 
+            return Helper::jsonErrorResponse($e->getMessage(), 500);
+        }
+    }
 }

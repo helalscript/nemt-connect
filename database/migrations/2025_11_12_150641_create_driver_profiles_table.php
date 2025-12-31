@@ -24,18 +24,7 @@ return new class extends Migration {
             $table->enum('gender', ['M', 'F', 'O'])->nullable();
             $table->date('birth_date')->nullable();
             $table->string('phone', 20);
-            
-            // $table->string('email')->unique();
-            // $table->string('password');
-
-            // // ============ Profile Photo ============
-            // $table->string('profile_photo')->nullable();
-
-            // // ============ Address ============
-            // $table->text('address')->nullable();
-            // $table->string('city')->nullable();
-            // $table->string('state_code', 5)->nullable();
-            // $table->string('zip_code', 10)->nullable();
+        
 
             // ============ Status ============
             $table->integer('status_id')->default(1); // 1 = Active, 2 = Inactive, 3 = Suspended,  4 = Pending Approval
@@ -84,7 +73,12 @@ return new class extends Migration {
             $table->timestamp('admin_verified_at')->nullable();
             $table->foreignId('admin_verified_by')->nullable()->constrained('users')->onDelete('set null');
             $table->text('admin_verified_note')->nullable();
-
+            
+            // ============ ADMIN REJECTED ============
+            $table->boolean('is_admin_rejected')->default(false);
+            $table->timestamp('admin_rejected_at')->nullable();
+            $table->foreignId('admin_rejected_by')->nullable()->constrained('users')->onDelete('set null');
+            $table->text('admin_rejected_reason')->nullable();
             // ============ Timestamps ============
             $table->timestamps();
             $table->softDeletes();
@@ -303,7 +297,6 @@ return new class extends Migration {
             $table->index(['driver_profile_id', 'shift_date']);
             $table->index('shift_date');
         });
-
     
     }
 

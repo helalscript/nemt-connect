@@ -109,4 +109,68 @@ class JoinRequestService
             throw $e;
         }
     }
+
+    public function accept(int $id)
+    {
+        try {
+            $joinRequest = DriverProfile::find($id);
+            if (!$joinRequest) {
+                throw new Exception('Join request not found');
+            }
+            //if already verified, throw an exception
+            if ($joinRequest->is_admin_verified) {
+                throw new Exception('Join request already verified by admin');
+            }
+            //if already rejected, throw an exception
+            if ($joinRequest->is_admin_rejected) {
+                throw new Exception('Join request already rejected by admin');
+            }
+            // ============ Update Join Request ============
+            $joinRequest->update([
+                'is_admin_verified' => true,
+                'admin_verified_at' => now(),
+                'admin_verified_by' => $this->user->id,
+                'admin_verified_note' => null,
+            ]);
+            // // ============ Send Notification to Driver ============
+            // $driver = $joinRequest->user;
+            // $driver->notify(new JoinRequestAcceptedNotification($joinRequest));
+            return $joinRequest;
+        } catch (Exception $e) {
+            Log::error('JoinRequestService::accept'.$e->getMessage());
+            throw $e;
+        }
+    }
+
+    public function reject(int $id, array $validatedData)
+    {
+        try {
+            $joinRequest = DriverProfile::find($id);
+            if (!$joinRequest) {
+                throw new Exception('Join request already rejected or not found');
+            }
+            //if already rejected, throw an exception
+            if ($joinRequest->is_admin_rejected) {
+                throw new Exception('Join request already rejected by admin');
+            }
+            //if already verified, throw an exception
+            if ($joinRequest->is_admin_verified) {
+                throw new Exception('Join request already verified by admin');
+            }
+            // ============ Update Join Request ============
+            $joinRequest->update([
+                'is_admin_rejected' => true,
+                'admin_rejected_at' => now(),
+                'admin_rejected_by' => $this->user->id,
+                'admin_rejected_reason' => $validatedData['reason'],
+            ]); 
+            // // ============ Send Notification to Driver ============
+            // $driver = $joinRequest->user;
+            // $driver->notify(new JoinRequestRejectedNotification($joinRequest));
+            return $joinRequest;
+        } catch (Exception $e) {
+            Log::error('JoinRequestService::reject'.$e->getMessage());
+            throw $e;
+        }
+    }
 }
